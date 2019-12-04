@@ -7,13 +7,16 @@ spec:
     - name: source-repo
       type: git
   tasks:
-    - name: apply-source
+    - name: deploy-image-no-replace
       taskRef:
-        name: deploy-from-source
+        name: deploy-using-kubectl-without-replacement
       resources:
         inputs:
           - name: source
             resource: source-repo
       params:
+      - name: PATHTODEPLOYMENT
+        value: deploy
       - name: NAMESPACE
         value: stage-environment
+    

@@ -33,9 +33,9 @@ if [ ! -f "${FILENAME}" ]; then
     exit 1
 fi
 
-sed -i "s|REPLACE_IMAGE|${IMAGE_REPO}|g" deploy/**/*.yaml pipelines/**/*.yaml
-sed -i "s|PULL_SECRET_NAME|${PULL_SECRET_NAME}|g" pipelines/serviceaccount/serviceaccount.yaml
-sed -i "s|QUAYIO_USERNAME|${QUAYIO_USERNAME}|g" pipelines/bootstrap.sh
-sed -i "s|DOCKER_CONFIG_NAME|${DOCKER_CONFIG_NAME}|g" pipelines/bootstrap.sh
-sed -i "s|GITHUB_REPO|${GITHUB_REPO}|g" pipelines/eventlisteners/cicd-event-listener.yaml
-sed -i "s|GITHUB_STAGE_REPO|${GITHUB_STAGE_REPO}|g" pipelines/eventlisteners/cicd-event-listener.yaml
+sed -i "" "s|REPLACE_IMAGE|${IMAGE_REPO}|g" deploy/**/*.yaml pipelines/**/*.yaml
+sed -i "" "s|PULL_SECRET_NAME|${PULL_SECRET_NAME}|g" pipelines/serviceaccount/serviceaccount.yaml
+sed -i "" "s|QUAYIO_USERNAME|${QUAYIO_USERNAME}|g" pipelines/bootstrap.sh
+sed -i "" "s|DOCKER_CONFIG_NAME|${DOCKER_CONFIG_NAME}|g" pipelines/bootstrap.sh
+sed -i "" "s|GITHUB_REPO|${GITHUB_REPO}|g" pipelines/eventlisteners/cicd-event-listener.yaml
+sed -i "" "s|GITHUB_STAGE_REPO|${GITHUB_STAGE_REPO}|g" pipelines/eventlisteners/cicd-event-listener.yaml

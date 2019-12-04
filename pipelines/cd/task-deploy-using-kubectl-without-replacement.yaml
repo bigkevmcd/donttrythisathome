@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: Task
 metadata:
-  name: deploy-from-source
+  name: deploy-using-kubectl-without-replacement
 spec:
   inputs:
     resources:
@@ -14,11 +14,7 @@ spec:
         default: deploy
       - name: NAMESPACE
         type: string
-        description: Namespace to deploy into
-      - name: DRYRUN
-        type: string
-        description: If true run a server-side dryrun.
-        default: "false"
+        description: Namespace to  deploy into
   steps:
     - name: run-kubectl
       image: quay.io/redhat-developer/k8s-kubectl:latest
@@ -26,7 +22,6 @@ spec:
       command: ["kubectl"]
       args:
         - "apply"
-        - "--dry-run=$(inputs.params.DRYRUN)"
         - "-n"
         - "$(inputs.params.NAMESPACE)"
         - "-k"
