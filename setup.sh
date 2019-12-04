@@ -2,6 +2,13 @@
 QUAYIO_USERNAME=$1
 GITHUB_REPO=$2
 
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     SED_OPTIONS="-i";;
+    Darwin*)    SED_OPTIONS="-i \"\"";;
+    *)          echo "unknown OS ${unameOut}"; exit 1;;
+esac
+
 if [[ $# -ne 2 ]]; then
     echo 'usage: ./setup.sh <quayio-username> <github repo>'
     exit 1
